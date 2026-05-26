@@ -54,16 +54,24 @@
             <span class="tag-muscle" id="muscleTag">Musculo</span>
           </div>
 
+          <div class="muscle-highlight" aria-label="Regiao trabalhada">
+            <p class="field-label">Regiao trabalhada</p>
+            <span class="muscle-chip" id="muscleRegion">-</span>
+          </div>
+
           <div class="video-wrapper" id="videoWrapper">
-            <video
+            <iframe
               id="exerciseVideo"
               class="exercise-video"
-              controls
-              playsinline
-              muted
-              preload="metadata"
-            ></video>
+              title="Video do exercicio"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
           </div>
+
+          <a class="btn-secondary video-link" id="videoLink" href="#" target="_blank" rel="noopener">
+            Abrir no YouTube
+          </a>
 
           <div class="video-fallback" id="videoFallback">
             <p class="fallback-title">Video indisponivel</p>
@@ -81,6 +89,52 @@
         <button class="btn-primary" type="button" data-action="add">Cadastrar video</button>
         <button class="btn-secondary" type="button" data-action="view">Ver todos</button>
       </footer>
+
+      <div class="modal" id="videoModal" aria-hidden="true" role="dialog" aria-label="Cadastrar video">
+        <div class="modal-card gym-card">
+          <div class="modal-header">
+            <div>
+              <p class="eyebrow">Cadastro</p>
+              <h2>Cadastrar video</h2>
+            </div>
+            <button class="icon-button" type="button" data-action="close-modal" aria-label="Fechar">
+              Fechar
+            </button>
+          </div>
+
+          <form id="videoForm" class="form-stack">
+            <label class="field-label" for="modalExerciseName">Exercicio selecionado</label>
+            <input
+              class="form-input"
+              id="modalExerciseName"
+              type="text"
+              name="exercise"
+              readonly
+            />
+
+            <label class="field-label" for="modalVideoUrl">URL do video</label>
+            <input
+              class="form-input"
+              id="modalVideoUrl"
+              type="url"
+              name="videoUrl"
+              placeholder="youtube.com/watch?v=... ou youtu.be/..."
+              required
+            />
+            <p class="helper-text">Aceita youtube.com, youtu.be, shorts e embed. Alguns videos nao permitem embed.</p>
+
+            <div class="form-actions">
+              <button class="btn-danger" type="button" data-action="remove-video">
+                Apagar video
+              </button>
+              <button class="btn-secondary" type="button" data-action="cancel-modal">
+                Cancelar
+              </button>
+              <button class="btn-primary" type="submit">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
 
       <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
