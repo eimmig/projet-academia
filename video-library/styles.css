@@ -186,6 +186,7 @@ h1 {
   border-radius: 14px;
   border: 1px solid var(--border-color);
   background: var(--bg-elevated);
+  color: var(--text-main);
   cursor: pointer;
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
