@@ -92,12 +92,14 @@ function renderList() {
   exerciseList.innerHTML = "";
   filteredExercises.forEach((exercise) => {
     const listItem = document.createElement("li");
-    listItem.className = "exercise-item";
+    const button = document.createElement("button");
+    button.className = "exercise-item";
+    button.type = "button";
     if (exercise.id === appState.selectedId) {
-      listItem.classList.add("active");
+      button.classList.add("active");
     }
 
-    listItem.dataset.id = exercise.id;
+    button.dataset.id = exercise.id;
 
     const info = document.createElement("div");
     const title = document.createElement("p");
@@ -116,8 +118,9 @@ function renderList() {
     status.classList.add(exercise.hasVideo ? "pill--ok" : "pill--warn");
     status.textContent = exercise.hasVideo ? "Video ok" : "Sem video";
 
-    listItem.appendChild(info);
-    listItem.appendChild(status);
+    button.appendChild(info);
+    button.appendChild(status);
+    listItem.appendChild(button);
     exerciseList.appendChild(listItem);
   });
 
@@ -189,6 +192,7 @@ filterBar.addEventListener("click", (event) => {
   appState.filter = chip.dataset.filter;
   filterBar.querySelectorAll(".chip").forEach((button) => {
     button.classList.toggle("active", button === chip);
+    button.setAttribute("aria-pressed", button === chip ? "true" : "false");
   });
 
   renderList();
@@ -206,6 +210,16 @@ tabButtons.forEach((button) => {
 actionButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const action = button.dataset.action;
+    if (action === "back") {
+      window.location.href = "../index.html";
+      return;
+    }
+
+    if (action === "help") {
+      showToast("Use os filtros e selecione um exercicio na lista.");
+      return;
+    }
+
     const message =
       action === "add"
         ? "Fluxo de cadastro em breve."

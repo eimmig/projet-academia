@@ -9,12 +9,12 @@
   <body>
     <main class="app-shell">
       <header class="app-bar">
-        <button class="icon-button" type="button">Voltar</button>
+        <button class="icon-button" type="button" data-action="back">Voltar</button>
         <div class="app-bar-title">
           <p class="eyebrow">Biblioteca</p>
           <h1>Videos</h1>
         </div>
-        <button class="icon-button" type="button">Ajuda</button>
+        <button class="icon-button" type="button" data-action="help">Ajuda</button>
       </header>
 
       <section class="hero">
@@ -29,10 +29,16 @@
             <h2>Disponiveis</h2>
             <span class="pill" id="mediaCount">0 midias</span>
           </div>
-          <div class="filter-bar" role="tablist" aria-label="Filtro de videos">
-            <button class="chip active" type="button" data-filter="all">Todos</button>
-            <button class="chip" type="button" data-filter="withVideo">Com video</button>
-            <button class="chip" type="button" data-filter="withoutVideo">Sem video</button>
+          <div class="filter-bar" role="group" aria-label="Filtro de videos">
+            <button class="chip active" type="button" data-filter="all" aria-pressed="true">
+              Todos
+            </button>
+            <button class="chip" type="button" data-filter="withVideo" aria-pressed="false">
+              Com video
+            </button>
+            <button class="chip" type="button" data-filter="withoutVideo" aria-pressed="false">
+              Sem video
+            </button>
           </div>
           <ul class="exercise-list" id="exerciseList"></ul>
           <p class="empty-state" id="emptyState">Nenhum exercicio encontrado.</p>

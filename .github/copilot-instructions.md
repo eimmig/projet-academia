@@ -59,6 +59,16 @@ O protótipo deve orbitar em torno de 4 pilares principais, gerenciados por um e
 - Renderizacao sempre via funcoes renderList(), renderDetail(), renderTabs().
 - Eventos atualizam apenas o state; UI muda pelas funcoes de render.
 
+## Organizacao de pastas
+- Cada tela nova deve ter sua propria pasta com index.html, styles.css e script.js.
+- O index principal na raiz lista e aponta para todas as telas.
+- Sempre atualizar o index principal ao criar nova tela.
+
+## Checklist de usabilidade
+- Elementos clicaveis devem ser focaveis por teclado (button ou tabindex).
+- Estados ativos devem refletir acessibilidade (aria-pressed/aria-selected).
+- Botoes sem acao devem ter feedback (toast/modal) ou ser removidos.
+
 ---
 
 # Design System e Padrões Obrigatórios
