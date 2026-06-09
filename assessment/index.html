@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gym Prototype - Avaliação Inicial</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-bar">
+        <button class="icon-button" type="button" data-action="back">Voltar</button>
+        <div>
+          <p class="eyebrow">Avaliação inicial</p>
+          <h1>Perfil de treino</h1>
+        </div>
+      </header>
+
+      <section class="hero">
+        <h2>Responda em poucos passos</h2>
+        <p class="subtitle">Preencha o formulário para estruturar seu perfil inicial.</p>
+      </section>
+
+      <section class="gym-card">
+        <form id="assessmentForm" class="form-stack" novalidate>
+          <fieldset>
+            <legend class="field-label">1. Qual é seu objetivo principal?</legend>
+            <label class="radio-label"><input type="radio" name="goal" value="forca" required /> Ganho de força</label>
+            <label class="radio-label"><input type="radio" name="goal" value="resistencia" /> Resistência</label>
+            <label class="radio-label"><input type="radio" name="goal" value="mobilidade" /> Mobilidade</label>
+          </fieldset>
+
+          <fieldset>
+            <legend class="field-label">2. Quantas vezes por semana você treina?</legend>
+            <select class="form-input" id="frequency" name="frequency" required>
+              <option value="" disabled selected>Escolha uma opção</option>
+              <option value="1">1 vez</option>
+              <option value="2">2 vezes</option>
+              <option value="3">3 vezes</option>
+              <option value="4">4 vezes</option>
+              <option value="5">5 vezes</option>
+              <option value="6">6 vezes</option>
+              <option value="7">7 vezes</option>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <legend class="field-label">3. Como você classificaria seu nível atual?</legend>
+            <label class="radio-label"><input type="radio" name="level" value="iniciante" required /> Iniciante</label>
+            <label class="radio-label"><input type="radio" name="level" value="intermediario" /> Intermediário</label>
+            <label class="radio-label"><input type="radio" name="level" value="avancado" /> Avançado</label>
+          </fieldset>
+
+          <fieldset>
+            <legend class="field-label">4. Tem alguma limitação física?</legend>
+            <label class="radio-label"><input type="radio" name="limitation" value="nenhuma" required /> Nenhuma</label>
+            <label class="radio-label"><input type="radio" name="limitation" value="lombar" /> Lombar</label>
+            <label class="radio-label"><input type="radio" name="limitation" value="joelho" /> Joelho</label>
+            <label class="radio-label"><input type="radio" name="limitation" value="ombro" /> Ombro</label>
+          </fieldset>
+
+          <div class="form-actions">
+            <button class="btn-secondary" type="button" data-action="back">Cancelar</button>
+            <button class="btn-primary" type="submit">Avançar</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="gym-card summary-panel hidden" id="profileSummary" aria-live="polite">
+        <p class="section-title">Perfil inicial estruturado</p>
+        <pre id="payloadOutput"></pre>
+      </section>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

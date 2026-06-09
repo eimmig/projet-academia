@@ -3,37 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gym Prototype - Navegacao</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <main class="app-shell">
-      <header class="app-bar">
-        <div>
-          <p class="eyebrow">Gym Prototype</p>
-          <h1>Index de Telas</h1>
-        </div>
-      </header>
+      <title>Gym Prototype - Login</title>
+      <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+      <main class="app-shell">
+        <header class="app-bar">
+          <div>
+            <p class="eyebrow">Gym Prototype</p>
+            <h1>Login</h1>
+          </div>
+        </header>
 
-      <section class="hero">
-        <h2>Navegabilidade</h2>
-        <p class="subtitle">
-          Cada tela fica em sua propria pasta com index.html, styles.css e script.js.
-        </p>
+        <section class="hero">
+          <h2>Bem-vindo de volta</h2>
+          <p class="subtitle">Faça login para acessar sua conta ou registre-se se ainda não tiver cadastro.</p>
+        <p class="section-title">Login</p>
+        <form id="loginForm" class="form-stack" novalidate>
+          <label class="field-label" for="loginEmail">Email</label>
+          <input class="form-input" id="loginEmail" type="email" placeholder="seu@email.com" required />
+
+          <label class="field-label" for="loginPassword">Senha</label>
+          <input class="form-input" id="loginPassword" type="password" placeholder="••••••••" required />
+
+          <div class="form-actions">
+            <button class="btn-secondary" type="button" data-action="register">Registrar</button>
+            <button class="btn-primary" type="submit">Entrar</button>
+          </div>
+        </form>
       </section>
 
-      <section class="gym-card" aria-label="Lista de telas">
-        <p class="section-title">Telas</p>
-        <ul class="screen-list">
-          <li class="screen-item">
-            <div>
-              <p class="screen-title">Biblioteca de Videos</p>
-              <p class="screen-meta">video-library/index.html</p>
-            </div>
-            <a class="btn-secondary" href="video-library/index.html">Abrir</a>
-          </li>
-        </ul>
-      </section>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
     </main>
+
+    <script src="script.js"></script>
   </body>
 </html>

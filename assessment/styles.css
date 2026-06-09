@@ -1,0 +1,210 @@
+:root {
+  --bg-principal: #0b1220;
+  --bg-surface: #111a2e;
+  --border-color: #1f2a44;
+  --accent: #2dd4bf;
+  --accent-hover: #5eead4;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --alert-color: #f97316;
+  --bg-elevated: #0f172a;
+  --shadow-soft: 0 10px 30px rgba(2, 6, 23, 0.35);
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Trebuchet MS", "Gill Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, var(--bg-surface), var(--bg-principal));
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  padding: var(--space-16);
+}
+
+.app-shell {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  padding: var(--space-24);
+  background: var(--bg-principal);
+  border-radius: 28px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
+}
+
+.app-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-14);
+}
+
+.icon-button {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 14px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.eyebrow {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.hero h2 {
+  font-size: 22px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.gym-card {
+  background: var(--bg-surface);
+  border-radius: 20px;
+  padding: var(--space-20);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
+}
+
+.form-stack {
+  display: grid;
+  gap: var(--space-24);
+}
+
+.field-label,
+legend {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: var(--space-8);
+}
+
+fieldset {
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: var(--space-16);
+  background: rgba(17, 26, 46, 0.8);
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-12);
+  color: var(--text-main);
+  font-size: 14px;
+}
+
+.form-input,
+select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-principal);
+  color: var(--text-main);
+  font-size: 14px;
+}
+
+.form-input:focus,
+select:focus,
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-12);
+}
+
+.btn-primary,
+.btn-secondary {
+  border-radius: 12px;
+  min-height: 44px;
+  padding: 0 18px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg-principal);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.summary-panel {
+  white-space: pre-wrap;
+  background: rgba(45, 212, 191, 0.08);
+  border: 1px solid var(--accent);
+}
+
+#payloadOutput {
+  margin: 0;
+  padding: var(--space-16);
+  border-radius: 14px;
+  background: var(--bg-principal);
+  color: var(--text-main);
+  font-size: 13px;
+}
+
+.hidden {
+  display: none;
+}
+
+.toast {
+  position: fixed;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(17, 26, 46, 0.96);
+  color: var(--text-main);
+  padding: 12px 18px;
+  border: 1px solid var(--accent);
+  border-radius: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.toast.visible {
+  opacity: 1;
+}
+
+@media (max-width: 520px) {
+  .app-shell {
+    border-radius: 0;
+    padding: var(--space-16);
+  }
+}

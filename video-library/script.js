@@ -92,7 +92,7 @@ function getYouTubeVideoId(url) {
         return parsedUrl.pathname.split("/embed/")[1]?.split("/")[0];
       }
     }
-  } catch (error) {
+  } catch {
     return null;
   }
 
@@ -143,8 +143,8 @@ function getFilteredExercises() {
 function showToast(message) {
   toast.textContent = message;
   toast.classList.add("visible");
-  window.clearTimeout(appState.toastTimerId);
-  appState.toastTimerId = window.setTimeout(() => {
+  globalThis.clearTimeout(appState.toastTimerId);
+  appState.toastTimerId = globalThis.setTimeout(() => {
     toast.classList.remove("visible");
   }, 2200);
 }
@@ -190,7 +190,6 @@ function renderList() {
     exerciseList.appendChild(listItem);
   });
 
-  const availableCount = exercises.filter((exercise) => exercise.hasVideo).length;
   const filteredCount = filteredExercises.length;
   mediaCount.textContent = `${filteredCount}/${exercises.length} midias`;
   emptyState.classList.toggle("visible", filteredCount === 0);
@@ -257,8 +256,19 @@ function renderDetail() {
 
 function renderTabs() {
   tabButtons.forEach((button) => {
-    const isActive = button.textContent === appState.activeTab;
+    const isActive = button.dataset.page === appState.activeTab;
     button.classList.toggle("active", isActive);
+  });
+}
+
+function initializeTabBar() {
+  tabButtons.forEach((button) => {
+    const target = button.dataset.target;
+    button.addEventListener("click", () => {
+      if (target) {
+        globalThis.location.href = target;
+      }
+    });
   });
 }
 
@@ -290,19 +300,13 @@ filterBar.addEventListener("click", (event) => {
   renderDetail();
 });
 
-tabButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    appState.activeTab = button.textContent;
-    renderTabs();
-    showToast(`Aba ativa: ${appState.activeTab}`);
-  });
-});
+initializeTabBar();
 
 actionButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const action = button.dataset.action;
     if (action === "back") {
-      window.location.href = "../index.html";
+      globalThis.location.href = "../dashboard/index.html";
       return;
     }
 
@@ -323,7 +327,7 @@ actionButtons.forEach((button) => {
         return;
       }
 
-      const shouldRemove = window.confirm(
+      const shouldRemove = globalThis.confirm(
         "Deseja apagar o video atual deste exercicio?"
       );
       if (!shouldRemove) {

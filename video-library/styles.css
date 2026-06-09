@@ -28,23 +28,64 @@
   padding: 0;
 }
 
+/* scrollbars more elegant and mobile-like */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) rgba(255, 255, 255, 0.08);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(45, 212, 191, 0.58);
+  border-radius: 999px;
+  border: 2px solid rgba(11, 18, 32, 0.7);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   font-family: "Trebuchet MS", "Gill Sans", "Segoe UI", sans-serif;
   background: radial-gradient(circle at top, var(--bg-glow), var(--bg-principal));
   color: var(--text-main);
-  min-height: 100vh;
   display: flex;
   justify-content: center;
-  padding: var(--space-16);
+  align-items: center;
+  padding: 0;
 }
 
 .app-shell {
-  width: 100%;
-  max-width: 430px;
+  width: 420px;
+  max-width: 420px;
+  min-width: 420px;
+  height: 860px;
+  max-height: 860px;
+  min-height: 860px;
   display: flex;
   flex-direction: column;
   gap: var(--space-20);
-  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
   background: var(--bg-principal);
   border-radius: 28px;
   padding: var(--space-20) var(--space-16) 120px;
@@ -116,6 +157,9 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: var(--space-16);
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
 .gym-card {
@@ -171,6 +215,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: var(--space-12);
+  padding-bottom: var(--space-12);
 }
 
 .exercise-item {
@@ -357,12 +402,32 @@ h1 {
 }
 
 .action-bar {
-  position: sticky;
-  bottom: 64px;
-  background: linear-gradient(180deg, rgba(2, 6, 23, 0) 0%, var(--bg-principal) 40%);
-  padding-top: var(--space-16);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 70px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
+  border-radius: 20px 20px 0 0;
   display: flex;
   gap: var(--space-12);
+  padding: var(--space-16);
+  z-index: 1;
+}
+
+.tab-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: var(--space-8);
+  background: var(--bg-surface);
+  border-radius: 18px;
+  padding: var(--space-8);
+  border: 1px solid var(--border-color);
+  z-index: 2;
 }
 
 .btn-primary {
@@ -498,8 +563,10 @@ h1 {
 }
 
 .tab-bar {
-  position: sticky;
+  position: absolute;
   bottom: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   gap: var(--space-8);

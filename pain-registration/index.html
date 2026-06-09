@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gym Prototype - Cadastrar dores</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-bar">
+        <button class="icon-button" type="button" data-action="back">Voltar</button>
+        <div>
+          <p class="eyebrow">Restrição do usuário</p>
+          <h1>Cadastrar dores</h1>
+        </div>
+      </header>
+
+      <section class="hero">
+        <h2>Informe suas dores ou lesões</h2>
+        <p class="subtitle">Escolha a região do corpo e descreva a dor para receber treinos mais seguros.</p>
+      </section>
+
+      <section class="gym-card">
+        <form id="painForm" class="form-stack" novalidate>
+          <input type="hidden" id="regionInput" name="region" required />
+
+          <fieldset>
+            <legend class="field-label">1. Região do corpo</legend>
+            <div class="region-grid" id="regionGrid" role="group" aria-label="Seleção de região do corpo">
+              <button class="region-button" type="button" data-region="Lombar">Lombar</button>
+              <button class="region-button" type="button" data-region="Joelho">Joelho</button>
+              <button class="region-button" type="button" data-region="Ombro">Ombro</button>
+              <button class="region-button" type="button" data-region="Cervical">Cervical</button>
+              <button class="region-button" type="button" data-region="Quadril">Quadril</button>
+              <button class="region-button" type="button" data-region="Tornozelo">Tornozelo</button>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend class="field-label">2. Tipo de sensação</legend>
+            <label class="radio-label"><input type="radio" name="type" value="Dor" required /> Dor</label>
+            <label class="radio-label"><input type="radio" name="type" value="Lesão" /> Lesão</label>
+          </fieldset>
+
+          <fieldset>
+            <legend class="field-label">3. Descreva a dor ou lesão</legend>
+            <textarea class="form-input" id="detailInput" name="detail" rows="4" placeholder="Ex: Dor aguda ao dobrar o joelho" required></textarea>
+          </fieldset>
+
+          <div class="form-actions">
+            <button class="btn-secondary" type="button" data-action="back">Cancelar</button>
+            <button class="btn-primary" type="submit">Salvar</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="gym-card summary-panel hidden" id="restrictionSummary" aria-live="polite">
+        <p class="section-title">Restrição salva</p>
+        <div id="summaryContent" class="summary-content"></div>
+      </section>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+      <nav class="tab-bar" aria-label="Navegacao principal">
+        <button class="tab-button" type="button" data-page="Dashboard" data-target="../dashboard/index.html">Dashboard</button>
+        <button class="tab-button" type="button" data-page="Biblioteca" data-target="../video-library/index.html">Biblioteca</button>
+        <button class="tab-button active" type="button" data-page="Dores" data-target="../pain-registration/index.html">Dores</button>
+        <button class="tab-button" type="button" data-page="Recomendações" data-target="../recommendations/index.html">Recomendações</button>
+      </nav>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

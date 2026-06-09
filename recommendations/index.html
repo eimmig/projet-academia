@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gym Prototype - Recomendações</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-bar">
+        <button class="icon-button" type="button" data-action="back">Voltar</button>
+        <div>
+          <p class="eyebrow">Exercícios recomendados</p>
+          <h1>Lista segura</h1>
+        </div>
+      </header>
+
+      <section class="hero">
+        <h2>Veja o que é permitido</h2>
+        <p class="subtitle">Os exercícios são filtrados com base nas suas restrições cadastradas.</p>
+      </section>
+
+      <section class="gym-card summary-panel" id="profileAlert" aria-live="polite">
+        <p class="section-title">Status do perfil</p>
+        <p id="profileMessage"></p>
+      </section>
+
+      <section class="gym-card" aria-label="Exercicios permitidos">
+        <p class="section-title">Permitidos</p>
+        <ul class="exercise-list" id="allowedList"></ul>
+      </section>
+
+      <section class="gym-card" aria-label="Exercicios bloqueados">
+        <p class="section-title">Bloqueados</p>
+        <ul class="exercise-list" id="blockedList"></ul>
+      </section>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+      <nav class="tab-bar" aria-label="Navegacao principal">
+        <button class="tab-button" type="button" data-page="Dashboard" data-target="../dashboard/index.html">Dashboard</button>
+        <button class="tab-button" type="button" data-page="Biblioteca" data-target="../video-library/index.html">Biblioteca</button>
+        <button class="tab-button" type="button" data-page="Dores" data-target="../pain-registration/index.html">Dores</button>
+        <button class="tab-button active" type="button" data-page="Recomendações" data-target="../recommendations/index.html">Recomendações</button>
+      </nav>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
