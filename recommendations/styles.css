@@ -158,6 +158,28 @@ body {
   display: grid;
   gap: var(--space-12);
   padding: 0;
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.exercise-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.exercise-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+}
+
+.exercise-list::-webkit-scrollbar-thumb {
+  background: rgba(45, 212, 191, 0.58);
+  border-radius: 999px;
+  border: 2px solid rgba(11, 18, 32, 0.7);
+}
+
+.exercise-list:hover::-webkit-scrollbar-thumb {
+  background: var(--accent-hover);
 }
 
 .exercise-card {
