@@ -1,7 +1,7 @@
 html,
 body {
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
 }
 
 :root {
@@ -25,6 +25,7 @@ body {
   --space-16: 16px;
   --space-20: 20px;
   --space-24: 24px;
+  --space-10: 10px;
 }
 
 * {
@@ -263,6 +264,144 @@ body {
   display: flex;
   justify-content: flex-end;
   gap: var(--space-12);
+}
+
+.icon-button {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-main);
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.icon-button:hover {
+  background: rgba(45, 212, 191, 0.12);
+  border-color: var(--accent);
+}
+
+.dashboard-actions {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.tab-bar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-10);
+  position: sticky;
+  bottom: 0;
+  background: rgba(11, 18, 32, 0.95);
+  padding: var(--space-12) 0 0;
+}
+
+.tab-button {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: var(--text-muted);
+  padding: 12px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.tab-button.active {
+  background: var(--bg-surface);
+  border-color: var(--accent);
+  color: var(--text-main);
+}
+
+.region-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-12);
+}
+
+.region-button {
+  background: var(--bg-principal);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 14px;
+  padding: 12px 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.region-button.active {
+  background: var(--accent);
+  color: var(--bg-principal);
+  border-color: var(--accent-hover);
+}
+
+.exercise-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-12);
+}
+
+.exercise-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  padding: var(--space-16);
+  border-radius: 16px;
+}
+
+.exercise-card h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.exercise-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.exercise-status.allowed {
+  background: rgba(45, 212, 191, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(45, 212, 191, 0.18);
+}
+
+.exercise-status.blocked {
+  background: rgba(249, 115, 22, 0.12);
+  color: var(--alert-color);
+  border: 1px solid rgba(249, 115, 22, 0.18);
+}
+
+.exercise-reason {
+  margin-top: var(--space-12);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.summary-panel.hidden {
+  display: none;
+}
+
+.welcome-text {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: var(--space-12);
+}
+
+.radio-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+.radio-label input {
+  accent-color: var(--accent);
 }
 
 .toast {

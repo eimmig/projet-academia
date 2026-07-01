@@ -2,8 +2,12 @@ const logoutButton = document.getElementById("logoutButton");
 const libraryButton = document.getElementById("libraryButton");
 const painRegistrationButton = document.getElementById("painRegistrationButton");
 const recommendationsButton = document.getElementById("recommendationsButton");
+const studentRegistrationButton = document.getElementById("studentRegistrationButton");
+const trainingSheetsButton = document.getElementById("trainingSheetsButton");
 const tabButtons = document.querySelectorAll(".tab-button");
 const welcomeText = document.getElementById("welcomeText");
+const completedCount = document.getElementById("completedCount");
+const lastWorkoutDate = document.getElementById("lastWorkoutDate");
 const toast = document.getElementById("toast");
 const STORAGE_KEY = "gymAppUsers";
 
@@ -29,9 +33,25 @@ function getCurrentUser() {
   return null;
 }
 
+function renderProgressPanel(user) {
+  const history = Array.isArray(user.workoutHistory) ? user.workoutHistory : [];
+  completedCount.textContent = String(history.length);
+
+  if (history.length === 0) {
+    lastWorkoutDate.textContent = "--";
+    return;
+  }
+
+  const lastEntry = history[history.length - 1];
+  const lastDate = new Date(lastEntry.completedAt);
+  lastWorkoutDate.textContent = lastDate.toLocaleDateString("pt-BR");
+}
+
 const currentUser = getCurrentUser();
 if (currentUser) {
-  welcomeText.textContent = `Olá, ${currentUser.name}. Vamos ao treino?`;
+  const levelText = currentUser.level ? `Nível: ${currentUser.level}. ` : "";
+  welcomeText.textContent = `Olá, ${currentUser.name}. ${levelText}Vamos ao treino?`;
+  renderProgressPanel(currentUser);
   setupTabBar("Dashboard");
 } else {
   globalThis.location.href = "../index.html";
@@ -59,6 +79,14 @@ painRegistrationButton.addEventListener("click", () => {
 
 recommendationsButton.addEventListener("click", () => {
   globalThis.location.href = "../recommendations/index.html";
+});
+
+studentRegistrationButton.addEventListener("click", () => {
+  globalThis.location.href = "../student-registration/index.html";
+});
+
+trainingSheetsButton.addEventListener("click", () => {
+  globalThis.location.href = "../training-sheets/index.html";
 });
 
 logoutButton.addEventListener("click", () => {

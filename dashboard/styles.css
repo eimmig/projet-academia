@@ -78,7 +78,7 @@ body {
   flex-direction: column;
   gap: var(--space-20);
   padding: var(--space-24);
-  padding-bottom: calc(var(--space-24) + 96px);
+  padding-bottom: calc(var(--space-24) + 68px);
   position: relative;
   background: var(--bg-principal);
   border-radius: 28px;
@@ -91,6 +91,37 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-12);
+  flex-shrink: 0;
+}
+
+.screen-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  overflow-y: auto;
+  margin-right: -16px;
+  padding-right: 16px;
+}
+
+.screen-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.screen-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+}
+
+.screen-content::-webkit-scrollbar-thumb {
+  background: rgba(45, 212, 191, 0.58);
+  border-radius: 999px;
+  border: 2px solid rgba(11, 18, 32, 0.7);
+}
+
+.screen-content:hover::-webkit-scrollbar-thumb {
+  background: var(--accent-hover);
 }
 
 .icon-button {
@@ -178,6 +209,35 @@ body {
 .dashboard-actions {
   display: grid;
   gap: var(--space-12);
+}
+
+.progress-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+}
+
+.progress-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: var(--space-16);
+  align-items: center;
+  text-align: center;
+}
+
+.progress-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.progress-label {
+  font-size: 12px;
+  color: var(--text-muted);
 }
 
 .toast {

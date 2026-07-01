@@ -8,7 +8,6 @@
   --text-muted: #94a3b8;
   --alert-color: #f97316;
   --bg-elevated: #0f172a;
-  --bg-glow: #16243a;
   --shadow-soft: 0 10px 30px rgba(2, 6, 23, 0.35);
   --space-8: 8px;
   --space-12: 12px;
@@ -62,7 +61,7 @@ body {
 body {
   font-family: "Trebuchet MS", "Gill Sans", "Segoe UI", sans-serif;
   color: var(--text-main);
-  background: radial-gradient(circle at top, var(--bg-glow), var(--bg-principal));
+  background: radial-gradient(circle at top, var(--bg-surface), var(--bg-principal));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,7 +81,6 @@ body {
   position: relative;
   overflow: hidden;
   padding: var(--space-24);
-  padding-bottom: calc(var(--space-24) + 68px);
   background: var(--bg-principal);
   border-radius: 28px;
   border: 1px solid var(--border-color);
@@ -127,8 +125,8 @@ body {
 }
 
 .icon-button {
-  border: 1px solid var(--border-color);
   background: var(--bg-surface);
+  border: 1px solid var(--border-color);
   color: var(--text-main);
   border-radius: 14px;
   padding: 10px 14px;
@@ -171,27 +169,141 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-muted);
-  margin-bottom: var(--space-14);
+  margin-bottom: var(--space-16);
 }
 
-.summary-panel {
-  background: rgba(45, 212, 191, 0.08);
-  border: 1px solid var(--accent);
+.form-stack {
+  display: grid;
+  gap: var(--space-20);
 }
 
-#profileMessage {
+.field-label,
+legend {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: var(--space-8);
+}
+
+fieldset {
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: var(--space-16);
+  background: var(--bg-elevated);
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-elevated);
   color: var(--text-main);
-  line-height: 1.6;
+  font-size: 14px;
 }
 
-.exercise-list {
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-12);
+}
+
+.btn-primary,
+.btn-secondary {
+  border-radius: 12px;
+  min-height: 44px;
+  padding: 0 18px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg-principal);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-danger {
+  border-radius: 12px;
+  min-height: 44px;
+  padding: 0 18px;
+  font-weight: 700;
+  cursor: pointer;
+  background: transparent;
+  color: var(--alert-color);
+  border: 1px solid var(--alert-color);
+}
+
+.btn-danger:hover {
+  background: rgba(249, 115, 22, 0.1);
+}
+
+.sheet-actions {
+  display: flex;
+  gap: var(--space-12);
+}
+
+.sheet-actions button {
+  flex: 1;
+}
+
+.exercise-checklist {
+  display: grid;
+  gap: var(--space-16);
+}
+
+.exercise-row {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  color: var(--text-main);
+  font-size: 14px;
+}
+
+.exercise-params {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+}
+
+.exercise-params select,
+.exercise-params input[data-field="rest"] {
+  grid-column: span 2;
+}
+
+.form-input.small {
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.form-input.small:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.sheet-list {
   list-style: none;
   display: grid;
   gap: var(--space-12);
   padding: 0;
 }
 
-.exercise-card {
+.sheet-card {
   display: flex;
   flex-direction: column;
   gap: var(--space-12);
@@ -201,72 +313,67 @@ body {
   background: var(--bg-elevated);
 }
 
-.exercise-card h3 {
+.sheet-card h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
 }
 
-.exercise-card p {
+.sheet-card p {
   margin: 0;
   color: var(--text-muted);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.5;
 }
 
-.exercise-status {
+.origin-badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-8);
-  padding: 8px 12px;
+  align-self: flex-start;
+  padding: 6px 12px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-}
-
-.exercise-status.allowed {
   background: rgba(45, 212, 191, 0.14);
   color: var(--accent);
   border: 1px solid var(--accent);
 }
 
-.exercise-status.blocked {
-  background: rgba(249, 115, 22, 0.12);
+.review-warning {
   color: var(--alert-color);
-  border: 1px solid var(--alert-color);
-}
-
-.exercise-reason {
-  color: var(--text-main);
   font-size: 13px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-color);
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid var(--alert-color);
   border-radius: 14px;
   padding: var(--space-12);
 }
 
-.btn-complete {
-  border: 1px solid var(--accent);
-  background: transparent;
-  color: var(--accent);
-  border-radius: 12px;
-  padding: 10px 14px;
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
   font-weight: 700;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.btn-complete:hover:not(:disabled) {
-  background: rgba(45, 212, 191, 0.08);
-  color: var(--accent-hover);
-  border-color: var(--accent-hover);
-}
-
-.btn-complete.completed,
-.btn-complete:disabled {
   background: rgba(45, 212, 191, 0.14);
   color: var(--accent);
-  cursor: default;
-  opacity: 0.85;
+  border: 1px solid var(--accent);
+}
+
+.exercise-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.empty-state {
+  color: var(--text-muted);
+  font-size: 14px;
+  text-align: center;
+  padding: var(--space-16);
+}
+
+.hidden {
+  display: none;
 }
 
 .toast {
@@ -287,36 +394,6 @@ body {
 .toast.visible {
   opacity: 1;
   transform: translateX(-50%) translateY(-6px);
-}
-
-.tab-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-10);
-  background: var(--bg-surface);
-  padding: var(--space-10);
-  border-radius: 18px;
-  border: 1px solid var(--border-color);
-}
-
-.tab-button {
-  flex: 1;
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  font-size: 12px;
-  padding: 12px 10px;
-  border-radius: 14px;
-  cursor: pointer;
-}
-
-.tab-button.active {
-  background: rgba(45, 212, 191, 0.16);
-  color: var(--accent);
 }
 
 @media (max-width: 520px) {

@@ -4,6 +4,7 @@ const backButtons = document.querySelectorAll('[data-action="back"]');
 
 const appState = { toastTimerId: null };
 const STORAGE_KEY = "gymAppUsers";
+const LEVEL_OPTIONS = new Set(["Iniciante", "Intermediário", "Avançado"]);
 
 function showToast(message) {
   toast.textContent = message;
@@ -35,9 +36,15 @@ registerForm.addEventListener("submit", (event) => {
   const email = document.getElementById("userEmail").value.trim().toLowerCase();
   const password = document.getElementById("userPassword").value.trim();
   const confirmPassword = document.getElementById("confirmPassword").value.trim();
+  const level = document.getElementById("userLevel").value;
 
-  if (!name || !email || !password || !confirmPassword) {
-    showToast("Preencha todos os campos para continuar.");
+  if (!name || !email || !password || !confirmPassword || !level) {
+    showToast("Preencha todos os campos, incluindo o nível físico.");
+    return;
+  }
+
+  if (!LEVEL_OPTIONS.has(level)) {
+    showToast("Selecione um nível físico válido.");
     return;
   }
 
@@ -54,7 +61,7 @@ registerForm.addEventListener("submit", (event) => {
     return;
   }
 
-  users.push({ name, email, password });
+  users.push({ name, email, password, level });
   saveUsers(users);
   showToast("Cadastro concluido. Redirecionando para login...");
 

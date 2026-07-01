@@ -16,20 +16,38 @@
         <button class="icon-button" type="button" id="logoutButton">Sair</button>
       </header>
 
-      <section class="hero">
-        <h2>Você já está logado</h2>
-        <p class="subtitle">Acesse sua biblioteca de vídeos para continuar seu treino.</p>
-        <p class="welcome-text" id="welcomeText"></p>
-      </section>
+      <div class="screen-content">
+        <section class="hero">
+          <h2>Você já está logado</h2>
+          <p class="subtitle">Acesse sua biblioteca de vídeos para continuar seu treino.</p>
+          <p class="welcome-text" id="welcomeText"></p>
+        </section>
 
-      <section class="gym-card">
-        <p class="section-title">Acesso rápido</p>
-        <div class="dashboard-actions">
-          <button class="btn-primary" id="libraryButton" type="button">Abrir Biblioteca de Vídeos</button>
-          <button class="btn-secondary" id="painRegistrationButton" type="button">Cadastrar dores</button>
-          <button class="btn-secondary" id="recommendationsButton" type="button">Ver recomendações</button>
-        </div>
-      </section>
+        <section class="gym-card" aria-label="Painel de evolução">
+          <p class="section-title">Painel de evolução</p>
+          <div class="progress-summary">
+            <div class="progress-stat">
+              <span class="progress-value" id="completedCount">0</span>
+              <span class="progress-label">Treinos concluídos</span>
+            </div>
+            <div class="progress-stat">
+              <span class="progress-value" id="lastWorkoutDate">--</span>
+              <span class="progress-label">Último treino</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="gym-card">
+          <p class="section-title">Acesso rápido</p>
+          <div class="dashboard-actions">
+            <button class="btn-primary" id="libraryButton" type="button">Abrir Biblioteca de Vídeos</button>
+            <button class="btn-secondary" id="painRegistrationButton" type="button">Configurar perfil</button>
+            <button class="btn-secondary" id="recommendationsButton" type="button">Ver recomendações</button>
+            <button class="btn-secondary" id="studentRegistrationButton" type="button">Cadastrar aluno</button>
+            <button class="btn-secondary" id="trainingSheetsButton" type="button">Fichas de treino</button>
+          </div>
+        </section>
+      </div>
 
       <div class="toast" id="toast" role="status" aria-live="polite"></div>
 

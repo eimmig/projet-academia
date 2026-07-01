@@ -1,4 +1,7 @@
 const painForm = document.getElementById("painForm");
+const levelForm = document.getElementById("levelForm");
+const levelInput = document.getElementById("levelInput");
+const modalityInput = document.getElementById("modalityInput");
 const regionGrid = document.getElementById("regionGrid");
 const regionInput = document.getElementById("regionInput");
 const summaryPanel = document.getElementById("restrictionSummary");
@@ -7,6 +10,17 @@ const toast = document.getElementById("toast");
 const backButtons = document.querySelectorAll('[data-action="back"]');
 const tabButtons = document.querySelectorAll(".tab-button");
 const STORAGE_KEY = "gymAppUsers";
+const LEVEL_OPTIONS = new Set(["Iniciante", "Intermediário", "Avançado"]);
+const MODALITY_OPTIONS = new Set([
+  "Musculação",
+  "Corrida",
+  "Natação",
+  "Ciclismo",
+  "Funcional/Crossfit",
+  "Yoga/Pilates",
+  "Lutas/Artes marciais",
+  "Outro",
+]);
 
 const regionsCatalog = new Set(["Lombar", "Joelho", "Ombro", "Cervical", "Quadril", "Tornozelo"]);
 const appState = { selectedRegion: null, toastTimerId: null };
@@ -51,6 +65,31 @@ function saveRestriction(restriction) {
   users[index].restrictions.push(restriction);
   saveUsers(users);
   return true;
+}
+
+function saveUserLevel(level, modality) {
+  const users = loadUsers();
+  const email = getCurrentUserEmail();
+  const index = users.findIndex((user) => user.email === email);
+  if (index === -1) {
+    return false;
+  }
+
+  users[index].level = level;
+  users[index].modality = modality;
+  saveUsers(users);
+  return true;
+}
+
+function initializeLevelInput() {
+  const currentUser = getCurrentUser();
+  if (!currentUser) return;
+  if (currentUser.level && LEVEL_OPTIONS.has(currentUser.level)) {
+    levelInput.value = currentUser.level;
+  }
+  if (currentUser.modality && MODALITY_OPTIONS.has(currentUser.modality)) {
+    modalityInput.value = currentUser.modality;
+  }
 }
 
 function renderSummary(restriction) {
@@ -125,6 +164,33 @@ painForm.addEventListener("submit", (event) => {
   showToast("Restrição salva no perfil com sucesso.");
 });
 
+levelForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const level = levelInput.value;
+  const modality = modalityInput.value;
+
+  if (!level || !LEVEL_OPTIONS.has(level)) {
+    showToast("Selecione um nível físico válido antes de salvar.");
+    return;
+  }
+
+  if (!modality || !MODALITY_OPTIONS.has(modality)) {
+    showToast("Selecione uma modalidade válida antes de salvar.");
+    return;
+  }
+
+  const saved = saveUserLevel(level, modality);
+  if (!saved) {
+    showToast("Não foi possível salvar. Faça login novamente.");
+    globalThis.setTimeout(() => {
+      globalThis.location.href = "../index.html";
+    }, 1200);
+    return;
+  }
+
+  showToast("Nível físico e modalidade salvos no perfil.");
+});
+
 function setupTabBar(currentPage) {
   tabButtons.forEach((button) => {
     button.classList.toggle("active", button.dataset.page === currentPage);
@@ -140,6 +206,7 @@ function setupTabBar(currentPage) {
 const currentUser = getCurrentUser();
 if (currentUser) {
   setupTabBar("Dores");
+  initializeLevelInput();
 } else {
   globalThis.location.href = "../index.html";
 }

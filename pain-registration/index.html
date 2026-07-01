@@ -16,49 +16,81 @@
         </div>
       </header>
 
-      <section class="hero">
-        <h2>Informe suas dores ou lesões</h2>
-        <p class="subtitle">Escolha a região do corpo e descreva a dor para receber treinos mais seguros.</p>
-      </section>
+      <div class="screen-content">
+        <section class="hero">
+          <h2>Informe suas dores ou lesões</h2>
+          <p class="subtitle">Escolha a região do corpo e descreva a dor para receber treinos mais seguros.</p>
+        </section>
 
-      <section class="gym-card">
-        <form id="painForm" class="form-stack" novalidate>
-          <input type="hidden" id="regionInput" name="region" required />
+        <section class="gym-card">
+          <p class="section-title">Nível físico e modalidade</p>
+          <form id="levelForm" class="form-stack" novalidate>
+            <label class="field-label" for="levelInput">Selecione o nível do aluno</label>
+            <select class="form-input" id="levelInput" required>
+              <option value="">Escolha o nível</option>
+              <option value="Iniciante">Iniciante</option>
+              <option value="Intermediário">Intermediário</option>
+              <option value="Avançado">Avançado</option>
+            </select>
 
-          <fieldset>
-            <legend class="field-label">1. Região do corpo</legend>
-            <div class="region-grid" id="regionGrid" role="group" aria-label="Seleção de região do corpo">
-              <button class="region-button" type="button" data-region="Lombar">Lombar</button>
-              <button class="region-button" type="button" data-region="Joelho">Joelho</button>
-              <button class="region-button" type="button" data-region="Ombro">Ombro</button>
-              <button class="region-button" type="button" data-region="Cervical">Cervical</button>
-              <button class="region-button" type="button" data-region="Quadril">Quadril</button>
-              <button class="region-button" type="button" data-region="Tornozelo">Tornozelo</button>
+            <label class="field-label" for="modalityInput">Modalidade praticada</label>
+            <select class="form-input" id="modalityInput" required>
+              <option value="">Escolha a modalidade</option>
+              <option value="Musculação">Musculação</option>
+              <option value="Corrida">Corrida</option>
+              <option value="Natação">Natação</option>
+              <option value="Ciclismo">Ciclismo</option>
+              <option value="Funcional/Crossfit">Funcional/Crossfit</option>
+              <option value="Yoga/Pilates">Yoga/Pilates</option>
+              <option value="Lutas/Artes marciais">Lutas/Artes marciais</option>
+              <option value="Outro">Outro</option>
+            </select>
+
+            <div class="form-actions">
+              <button class="btn-primary" type="submit">Salvar nível e modalidade</button>
             </div>
-          </fieldset>
+          </form>
+        </section>
 
-          <fieldset>
-            <legend class="field-label">2. Tipo de sensação</legend>
-            <label class="radio-label"><input type="radio" name="type" value="Dor" required /> Dor</label>
-            <label class="radio-label"><input type="radio" name="type" value="Lesão" /> Lesão</label>
-          </fieldset>
+        <section class="gym-card">
+          <form id="painForm" class="form-stack" novalidate>
+            <input type="hidden" id="regionInput" name="region" required />
 
-          <fieldset>
-            <legend class="field-label">3. Descreva a dor ou lesão</legend>
-            <textarea class="form-input" id="detailInput" name="detail" rows="4" placeholder="Ex: Dor aguda ao dobrar o joelho" required></textarea>
-          </fieldset>
+            <fieldset>
+              <legend class="field-label">1. Região do corpo</legend>
+              <div class="region-grid" id="regionGrid" role="group" aria-label="Seleção de região do corpo">
+                <button class="region-button" type="button" data-region="Lombar">Lombar</button>
+                <button class="region-button" type="button" data-region="Joelho">Joelho</button>
+                <button class="region-button" type="button" data-region="Ombro">Ombro</button>
+                <button class="region-button" type="button" data-region="Cervical">Cervical</button>
+                <button class="region-button" type="button" data-region="Quadril">Quadril</button>
+                <button class="region-button" type="button" data-region="Tornozelo">Tornozelo</button>
+              </div>
+            </fieldset>
 
-          <div class="form-actions">
-            <button class="btn-secondary" type="button" data-action="back">Cancelar</button>
-            <button class="btn-primary" type="submit">Salvar</button>
-          </div>
-        </form>
-      </section>
+            <fieldset>
+              <legend class="field-label">2. Tipo de sensação</legend>
+              <label class="radio-label"><input type="radio" name="type" value="Dor" required /> Dor</label>
+              <label class="radio-label"><input type="radio" name="type" value="Lesão" /> Lesão</label>
+            </fieldset>
 
-      <section class="gym-card summary-panel hidden" id="restrictionSummary" aria-live="polite">
-        <p class="section-title">Restrição salva</p>
-        <div id="summaryContent" class="summary-content"></div>
-      </section>
+            <fieldset>
+              <legend class="field-label">3. Descreva a dor ou lesão</legend>
+              <textarea class="form-input" id="detailInput" name="detail" rows="4" placeholder="Ex: Dor aguda ao dobrar o joelho" required></textarea>
+            </fieldset>
+
+            <div class="form-actions">
+              <button class="btn-secondary" type="button" data-action="back">Cancelar</button>
+              <button class="btn-primary" type="submit">Salvar</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="gym-card summary-panel hidden" id="restrictionSummary" aria-live="polite">
+          <p class="section-title">Restrição salva</p>
+          <div id="summaryContent" class="summary-content"></div>
+        </section>
+      </div>
 
       <div class="toast" id="toast" role="status" aria-live="polite"></div>
 

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gym Prototype - Cadastro de Alunos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-bar">
+        <button class="icon-button" type="button" data-action="back">Voltar</button>
+        <div>
+          <p class="eyebrow">Professor</p>
+          <h1>Cadastro de alunos</h1>
+        </div>
+      </header>
+
+      <div class="screen-content">
+        <section class="hero">
+          <h2>Novo aluno</h2>
+          <p class="subtitle">Preencha os dados para vincular um novo aluno ao seu perfil de professor.</p>
+        </section>
+
+        <section class="gym-card">
+          <form id="studentForm" class="form-stack" novalidate>
+            <label class="field-label" for="studentName">Nome do aluno</label>
+            <input class="form-input" id="studentName" type="text" placeholder="Nome completo" required />
+
+            <label class="field-label" for="studentEmail">Email do aluno</label>
+            <input class="form-input" id="studentEmail" type="email" placeholder="aluno@email.com" required />
+
+            <label class="field-label" for="studentLevel">Nível físico</label>
+            <select class="form-input" id="studentLevel" required>
+              <option value="">Escolha o nível</option>
+              <option value="Iniciante">Iniciante</option>
+              <option value="Intermediário">Intermediário</option>
+              <option value="Avançado">Avançado</option>
+            </select>
+
+            <label class="field-label" for="studentGoal">Objetivo</label>
+            <select class="form-input" id="studentGoal" required>
+              <option value="">Escolha o objetivo</option>
+              <option value="Emagrecimento">Emagrecimento</option>
+              <option value="Hipertrofia">Hipertrofia</option>
+              <option value="Condicionamento">Condicionamento</option>
+              <option value="Saúde geral">Saúde geral</option>
+            </select>
+
+            <label class="field-label" for="studentFrequency">Frequência semanal</label>
+            <select class="form-input" id="studentFrequency" required>
+              <option value="">Escolha a frequência</option>
+              <option value="1-2x por semana">1-2x por semana</option>
+              <option value="3-4x por semana">3-4x por semana</option>
+              <option value="5x ou mais por semana">5x ou mais por semana</option>
+            </select>
+
+            <div class="form-actions">
+              <button class="btn-primary" type="submit">Cadastrar aluno</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="gym-card" aria-label="Alunos cadastrados">
+          <p class="section-title">Meus alunos</p>
+          <div class="filter-bar">
+            <input class="form-input" id="studentSearch" type="search" placeholder="Buscar por nome ou email" data-filter="students" />
+          </div>
+          <ul class="student-list" id="studentList"></ul>
+          <p class="empty-state hidden" id="studentEmptyState">Nenhum aluno encontrado.</p>
+        </section>
+      </div>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

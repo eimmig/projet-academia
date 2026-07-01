@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gym Prototype - Fichas de Treino</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-bar">
+        <button class="icon-button" type="button" data-action="back">Voltar</button>
+        <div>
+          <p class="eyebrow">Professor</p>
+          <h1>Fichas de treino</h1>
+        </div>
+      </header>
+
+      <div class="screen-content">
+        <section class="hero">
+          <h2>Crie e reutilize fichas</h2>
+          <p class="subtitle">Monte uma ficha de treino e duplique para outros alunos sem recomeçar do zero.</p>
+        </section>
+
+        <section class="gym-card">
+          <form id="sheetForm" class="form-stack" novalidate>
+            <label class="field-label" for="sheetName">Nome da ficha</label>
+            <input class="form-input" id="sheetName" type="text" placeholder="Ex: Treino A - Full Body" required />
+
+            <label class="field-label" for="sheetStudent">Aluno vinculado</label>
+            <select class="form-input" id="sheetStudent">
+              <option value="">Sem aluno vinculado</option>
+            </select>
+
+            <label class="field-label" for="sheetLevel">Nível físico do aluno</label>
+            <select class="form-input" id="sheetLevel" required>
+              <option value="">Escolha o nível</option>
+              <option value="Iniciante">Iniciante</option>
+              <option value="Intermediário">Intermediário</option>
+              <option value="Avançado">Avançado</option>
+            </select>
+
+            <label class="field-label" for="sheetModality">Modalidade</label>
+            <select class="form-input" id="sheetModality" required>
+              <option value="">Escolha a modalidade</option>
+              <option value="Musculação">Musculação</option>
+              <option value="Corrida">Corrida</option>
+              <option value="Natação">Natação</option>
+              <option value="Ciclismo">Ciclismo</option>
+              <option value="Funcional/Crossfit">Funcional/Crossfit</option>
+              <option value="Yoga/Pilates">Yoga/Pilates</option>
+              <option value="Lutas/Artes marciais">Lutas/Artes marciais</option>
+              <option value="Outro">Outro</option>
+            </select>
+
+            <fieldset>
+              <legend class="field-label">Exercícios, volume e intensidade</legend>
+              <div class="exercise-checklist" id="exerciseChecklist"></div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button class="btn-primary" type="submit">Criar ficha</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="gym-card" aria-label="Fichas cadastradas">
+          <p class="section-title">Minhas fichas</p>
+          <ul class="sheet-list" id="sheetList"></ul>
+          <p class="empty-state hidden" id="sheetEmptyState">Nenhuma ficha criada ainda.</p>
+        </section>
+      </div>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
